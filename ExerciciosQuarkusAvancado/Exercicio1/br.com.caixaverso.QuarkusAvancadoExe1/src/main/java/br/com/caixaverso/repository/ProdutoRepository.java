@@ -1,0 +1,10 @@
+package br.com.caixaverso.repository;
+
+import br.com.caixaverso.model.Produto;
+import io.quarkus.hibernate.orm.panache.PanacheRepository;
+import jakarta.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped
+public class ProdutoRepository implements PanacheRepository<Produto> {
+    // Métodos personalizados podem ser adicionados aqui
+}

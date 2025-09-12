@@ -1,0 +1,19 @@
+# IntelliJ
+.idea/
+*.iml
+
+# Maven
+.mvn/
+target/
+
+# Scripts auxiliares
+mvnw
+mvnw.cmd
+
+# Docker
+src/main/docker/
+
+# Arquivos temporários
+*.log
+*.txt
+*-bkp-*/
