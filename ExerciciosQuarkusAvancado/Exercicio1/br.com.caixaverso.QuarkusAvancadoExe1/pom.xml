@@ -68,10 +68,16 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-smallrye-openapi</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-oidc</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
+
+            <!-- Plugin principal do Quarkus -->
             <plugin>
                 <groupId>${quarkus.platform.group-id}</groupId>
                 <artifactId>quarkus-maven-plugin</artifactId>
@@ -88,13 +94,21 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!-- Compilador Java com suporte a parâmetros e avisos de APIs obsoletas -->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${compiler-plugin.version}</version>
                 <configuration>
                     <parameters>true</parameters>
+                    <compilerArgs>
+                        <arg>-Xlint:deprecation</arg>
+                    </compilerArgs>
+                    <showDeprecation>true</showDeprecation>
                 </configuration>
             </plugin>
+
+            <!-- Testes unitários com JUnit e RestAssured -->
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${surefire-plugin.version}</version>
@@ -105,6 +119,8 @@
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
+
+            <!-- Testes de integração e verificação final -->
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>${surefire-plugin.version}</version>
@@ -124,6 +140,7 @@
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 
